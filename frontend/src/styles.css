@@ -1,0 +1,20 @@
+:root {
+  --green: #2e8b57;
+  --bg: #f6f8fa;
+  --card: #fff;
+  --line: #e5e7eb;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, "Segoe UI", sans-serif; background: var(--bg); color: #1f2937; }
+.app { max-width: 960px; margin: 0 auto; padding: 24px; }
+header { display: flex; justify-content: space-between; align-items: center; }
+h1 { font-size: 20px; color: var(--green); }
+select { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+.kpi { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; text-align: center; }
+.kpi-value { font-size: 24px; font-weight: 700; color: var(--green); }
+.kpi-label { margin-top: 6px; color: #6b7280; font-size: 13px; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { background: var(--green); color: #fff; }
+.err { color: #b91c1c; }
