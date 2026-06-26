@@ -1,0 +1,11 @@
+.line { display: flex; align-items: center; gap: 20rpx; background: #fff; border-radius: 16rpx; padding: 20rpx; margin-bottom: 18rpx; }
+.line__img { width: 110rpx; height: 110rpx; border-radius: 12rpx; display: flex; align-items: center; justify-content: center; font-size: 60rpx; background: linear-gradient(160deg, #e7e0d3, #cfc7b6); }
+.line__info { flex: 1; }
+.line__name { font-size: 28rpx; }
+.stepper { display: flex; align-items: center; border: 1rpx solid #e6e2da; border-radius: 999rpx; }
+.step { width: 60rpx; height: 56rpx; line-height: 52rpx; text-align: center; font-size: 36rpx; }
+.qtynum { width: 56rpx; text-align: center; font-size: 28rpx; }
+.del { width: 48rpx; text-align: center; color: #8a877d; font-size: 40rpx; }
+.empty { padding: 160rpx 0; text-align: center; }
+.checkout { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; padding: 20rpx 24rpx; background: #fff; box-shadow: 0 -2rpx 12rpx rgba(0,0,0,.05); font-size: 30rpx; }
+.checkout__btn { width: 220rpx; }

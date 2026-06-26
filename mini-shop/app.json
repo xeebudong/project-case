@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/cart/cart"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#2e8b57",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "极简商城",
+    "backgroundColor": "#f6f8fa"
+  },
+  "tabBar": {
+    "color": "#8a877d",
+    "selectedColor": "#2e8b57",
+    "backgroundColor": "#ffffff",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "商城" },
+      { "pagePath": "pages/cart/cart", "text": "购物车" }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

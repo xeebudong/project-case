@@ -1,0 +1,20 @@
+<view wx:if="{{product}}">
+  <view class="hero">{{product.emoji}}</view>
+  <view class="info">
+    <view class="name">{{product.name}}</view>
+    <view class="muted">{{product.tagline}}</view>
+    <view class="price price--lg">¥{{product.price}}</view>
+    <view class="qtybar">
+      <text class="qtylabel">数量</text>
+      <view class="stepper">
+        <view class="step" bindtap="dec">−</view>
+        <text class="qtynum">{{qty}}</text>
+        <view class="step" bindtap="inc">+</view>
+      </view>
+    </view>
+  </view>
+  <view class="bar">
+    <view class="btn btn--ghost bar__btn" bindtap="add">加入购物车</view>
+    <view class="btn bar__btn" bindtap="buyNow">立即购买</view>
+  </view>
+</view>

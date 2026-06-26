@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="grid">
+    <view class="card item" wx:for="{{products}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="item__img">{{item.emoji}}</view>
+      <view class="item__body">
+        <view class="item__name">{{item.name}}</view>
+        <view class="muted">{{item.tagline}}</view>
+        <view class="item__row">
+          <text class="price">¥{{item.price}}</text>
+          <view class="add" catchtap="addToCart" data-id="{{item.id}}">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

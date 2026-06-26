@@ -1,0 +1,11 @@
+.hero { height: 520rpx; display: flex; align-items: center; justify-content: center; font-size: 200rpx; background: linear-gradient(160deg, #e7e0d3, #cfc7b6); }
+.info { padding: 32rpx 24rpx; background: #fff; }
+.name { font-size: 38rpx; font-weight: 500; }
+.price--lg { font-size: 44rpx; margin-top: 20rpx; }
+.qtybar { display: flex; align-items: center; justify-content: space-between; margin-top: 32rpx; }
+.qtylabel { font-size: 28rpx; }
+.stepper { display: flex; align-items: center; border: 1rpx solid #e6e2da; border-radius: 999rpx; overflow: hidden; }
+.step { width: 72rpx; height: 64rpx; line-height: 60rpx; text-align: center; font-size: 40rpx; color: #26251f; }
+.qtynum { width: 72rpx; text-align: center; font-size: 30rpx; }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 20rpx; padding: 20rpx 24rpx; background: #fff; box-shadow: 0 -2rpx 12rpx rgba(0,0,0,.05); }
+.bar__btn { flex: 1; }
