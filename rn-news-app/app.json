@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "News",
+    "slug": "rn-news-app",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": { "backgroundColor": "#2e8b57" },
+    "ios": { "supportsTablet": true },
+    "android": { "adaptiveIcon": { "backgroundColor": "#2e8b57" } }
+  }
+}
