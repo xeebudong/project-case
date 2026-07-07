@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AUR Faucet · 领取测试代币</title>
+  <style>
+    :root { --green:#2e8b57; --bg:#f6f8fa; --line:#e5e7eb; }
+    * { box-sizing:border-box } body { margin:0; font-family:system-ui,"Segoe UI","Microsoft YaHei",sans-serif; background:var(--bg); color:#1f2937 }
+    .wrap { max-width:520px; margin:60px auto; padding:0 20px }
+    .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px; box-shadow:0 1px 3px rgba(0,0,0,.04) }
+    h1 { font-size:22px; margin:0 0 4px } .sub { color:#6b7280; font-size:14px; margin-bottom:22px }
+    .btn { width:100%; padding:13px; border:none; border-radius:10px; background:var(--green); color:#fff; font-size:15px; cursor:pointer }
+    .btn:disabled { opacity:.5; cursor:not-allowed }
+    .btn--ghost { background:#fff; color:var(--green); border:1px solid var(--green) }
+    .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px }
+    .row b { font-family:ui-monospace,Consolas,monospace }
+    .muted { color:#6b7280 } .mt { margin-top:16px }
+    .status { margin-top:16px; font-size:13px; color:#6b7280; min-height:18px }
+    code { background:#f0f2f4; padding:2px 6px; border-radius:5px; font-size:12px }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>AUR Faucet</h1>
+      <p class="sub">领取 Aurelia Token（AUR）测试代币 · 每地址每 24h 一次</p>
+
+      <button class="btn btn--ghost" id="connect">连接钱包</button>
+
+      <div id="panel" style="display:none">
+        <div class="row"><span class="muted">地址</span><b id="addr">—</b></div>
+        <div class="row"><span class="muted">网络</span><b id="net">—</b></div>
+        <div class="row"><span class="muted">AUR 余额</span><b id="bal">—</b></div>
+        <div class="row"><span class="muted">下次可领</span><b id="cool">—</b></div>
+        <button class="btn mt" id="claim">领取 100 AUR</button>
+      </div>
+
+      <div class="status" id="status"></div>
+      <p class="muted mt" style="font-size:12px">
+        部署合约后，把地址填入 <code>web/app.js</code> 的 <code>CONTRACT_ADDRESS</code>。
+        需要浏览器安装 MetaMask，并切到部署所在测试网（如 Sepolia）。
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
