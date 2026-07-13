@@ -10,13 +10,13 @@
 <body>
   <header class="nav">
     <div class="container nav__inner">
-      <a class="brand" href="#">AURELIA</a>
+      <a class="brand" href="index.html">AURELIA</a>
       <nav class="nav__links">
-        <a href="#products">Products</a>
-        <a href="#story">Story</a>
-        <a href="#shop">Shop</a>
+        <a href="index.html#products">Products</a>
+        <a href="index.html#story">Story</a>
+        <a href="index.html#shop">Shop</a>
       </nav>
-      <button class="btn btn--ghost" aria-label="cart">Cart · 0</button>
+      <a class="btn btn--ghost" href="cart.html" data-cart-label>Cart · 0</a>
     </div>
   </header>
 
@@ -28,11 +28,11 @@
         <p class="lead">Low-tone, sustainable formulas designed with restraint —
           the calm of Scandinavian living, distilled.</p>
         <div class="hero__cta">
-          <a class="btn btn--solid" href="#shop">Shop the collection</a>
+          <a class="btn btn--solid" href="#products">Shop the collection</a>
           <a class="btn btn--text" href="#story">Our philosophy →</a>
         </div>
       </div>
-      <div class="hero__art" aria-hidden="true"></div>
+      <div class="hero__art"><img src="img/hero.svg" alt="AURELIA bottle" /></div>
     </div>
   </section>
 
@@ -40,38 +40,9 @@
     <div class="container">
       <div class="section__head">
         <h2>The collection</h2>
-        <p class="muted">Four essentials. Nothing more.</p>
+        <p class="muted">Six essentials. Nothing more.</p>
       </div>
-      <div class="grid">
-        <article class="card">
-          <div class="card__img card__img--1"></div>
-          <h3>Cleansing Balm</h3>
-          <p class="muted">Cold-pressed oils · 100ml</p>
-          <div class="card__row"><span class="price">$38</span>
-            <button class="btn btn--ghost">Add</button></div>
-        </article>
-        <article class="card">
-          <div class="card__img card__img--2"></div>
-          <h3>Daily Serum</h3>
-          <p class="muted">Niacinamide 5% · 30ml</p>
-          <div class="card__row"><span class="price">$52</span>
-            <button class="btn btn--ghost">Add</button></div>
-        </article>
-        <article class="card">
-          <div class="card__img card__img--3"></div>
-          <h3>Body Lotion</h3>
-          <p class="muted">Oat + shea · 250ml</p>
-          <div class="card__row"><span class="price">$29</span>
-            <button class="btn btn--ghost">Add</button></div>
-        </article>
-        <article class="card">
-          <div class="card__img card__img--4"></div>
-          <h3>Hand Wash</h3>
-          <p class="muted">Cedar & moss · 300ml</p>
-          <div class="card__row"><span class="price">$22</span>
-            <button class="btn btn--ghost">Add</button></div>
-        </article>
-      </div>
+      <div class="grid" id="grid"></div>
     </div>
   </section>
 
@@ -96,7 +67,7 @@
     <div class="container cta__inner">
       <h2>Join the ritual</h2>
       <p class="muted">Early access to drops. No noise.</p>
-      <form class="subscribe" onsubmit="return false;">
+      <form class="subscribe" onsubmit="this.reset();return false;">
         <input type="email" placeholder="you@email.com" aria-label="email" required />
         <button class="btn btn--solid">Subscribe</button>
       </form>
@@ -109,5 +80,25 @@
       <span class="muted">© 2026 · Nordic personal care · Demo build</span>
     </div>
   </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    (function () {
+      var grid = document.getElementById("grid");
+      grid.innerHTML = window.PRODUCTS.map(function (p) {
+        return '' +
+          '<article class="card">' +
+          '  <a class="card__img" href="product.html?id=' + p.id + '">' +
+          '    <img src="' + p.img + '" alt="' + p.name + '" loading="lazy" />' +
+          '  </a>' +
+          '  <a class="card__title" href="product.html?id=' + p.id + '"><h3>' + p.name + '</h3></a>' +
+          '  <p class="muted">' + p.tagline + ' · ' + p.size + '</p>' +
+          '  <div class="card__row"><span class="price">$' + p.price + '</span>' +
+          '    <button class="btn btn--ghost" data-add="' + p.id + '">Add</button></div>' +
+          '</article>';
+      }).join("");
+    })();
+  </script>
 </body>
 </html>

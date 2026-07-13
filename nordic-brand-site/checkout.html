@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA — Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">AURELIA</a>
+      <nav class="nav__links">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#story">Story</a>
+        <a href="index.html#shop">Shop</a>
+      </nav>
+      <a class="btn btn--ghost" href="cart.html" data-cart-label>Cart · 0</a>
+    </div>
+  </header>
+
+  <main class="container checkout" id="checkout"></main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand">AURELIA</span>
+      <span class="muted">© 2026 · Nordic personal care · Demo build</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    var root = document.getElementById("checkout");
+
+    function orderSummary() {
+      var items = Store.items();
+      var lines = items.map(function (it) {
+        return '<div class="summary__row"><span>' + it.product.name +
+          ' × ' + it.qty + '</span><span>' + Store.money(it.line) + '</span></div>';
+      }).join("");
+      var ship = Store.shipping();
+      return '<aside class="summary">' +
+        '<h3>Order summary</h3>' + lines +
+        '<div class="summary__row"><span>Shipping</span><span>' + (ship === 0 ? "Free" : Store.money(ship)) + '</span></div>' +
+        '<div class="summary__row summary__total"><span>Total</span><span>' + Store.money(Store.total()) + '</span></div>' +
+        '</aside>';
+    }
+
+    function renderForm() {
+      if (!Store.items().length) {
+        root.innerHTML = '<div class="empty"><p class="muted">Your cart is empty.</p>' +
+          '<a class="btn btn--solid" href="index.html#products">Shop the collection</a></div>';
+        return;
+      }
+      root.innerHTML =
+        '<a class="crumb" href="cart.html">← Back to cart</a>' +
+        '<h1>Checkout</h1>' +
+        '<div class="checkout__grid">' +
+        '<form class="form" id="pay">' +
+        '  <h3>Contact</h3>' +
+        '  <label>Email<input required type="email" placeholder="you@email.com" /></label>' +
+        '  <h3>Shipping address</h3>' +
+        '  <div class="form__row"><label>First name<input required placeholder="First" /></label>' +
+        '    <label>Last name<input required placeholder="Last" /></label></div>' +
+        '  <label>Address<input required placeholder="Street address" /></label>' +
+        '  <div class="form__row"><label>City<input required placeholder="City" /></label>' +
+        '    <label>Postal code<input required placeholder="ZIP" /></label></div>' +
+        '  <label>Country<input required placeholder="Country" value="Sweden" /></label>' +
+        '  <h3>Payment</h3>' +
+        '  <label>Card number<input required inputmode="numeric" placeholder="4242 4242 4242 4242" /></label>' +
+        '  <div class="form__row"><label>Expiry<input required placeholder="MM/YY" /></label>' +
+        '    <label>CVC<input required inputmode="numeric" placeholder="123" /></label></div>' +
+        '  <button class="btn btn--solid btn--block" type="submit">Place order · ' + Store.money(Store.total()) + '</button>' +
+        '  <p class="muted note">Demo checkout — no real payment is processed.</p>' +
+        '</form>' +
+        orderSummary() +
+        '</div>';
+
+      document.getElementById("pay").addEventListener("submit", function (e) {
+        e.preventDefault();
+        placeOrder();
+      });
+    }
+
+    function placeOrder() {
+      var orderNo = "AUR-" + Date.now().toString().slice(-6);
+      var totalStr = Store.money(Store.total());
+      Store.clear();
+      root.innerHTML =
+        '<div class="confirm">' +
+        '  <div class="confirm__check">✓</div>' +
+        '  <h1>Thank you</h1>' +
+        '  <p class="lead">Your order <strong>' + orderNo + '</strong> is confirmed.</p>' +
+        '  <p class="muted">A confirmation has been sent to your email. Total charged: ' + totalStr + '.</p>' +
+        '  <a class="btn btn--solid" href="index.html">Back to home</a>' +
+        '</div>';
+    }
+
+    renderForm();
+  </script>
+</body>
+</html>

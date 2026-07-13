@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA — Product</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">AURELIA</a>
+      <nav class="nav__links">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#story">Story</a>
+        <a href="index.html#shop">Shop</a>
+      </nav>
+      <a class="btn btn--ghost" href="cart.html" data-cart-label>Cart · 0</a>
+    </div>
+  </header>
+
+  <main class="container pdp" id="pdp">
+    <!-- filled by JS -->
+  </main>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head"><h2>You may also like</h2></div>
+      <div class="grid" id="related"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand">AURELIA</span>
+      <span class="muted">© 2026 · Nordic personal care · Demo build</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    (function () {
+      var id = new URLSearchParams(location.search).get("id");
+      var p = Store.byId(id);
+      var pdp = document.getElementById("pdp");
+      if (!p) {
+        pdp.innerHTML = '<p class="muted" style="padding:60px 0">Product not found. ' +
+          '<a href="index.html">Back to shop →</a></p>';
+        document.getElementById("related").closest("section").style.display = "none";
+        return;
+      }
+      document.title = "AURELIA — " + p.name;
+      pdp.innerHTML = '' +
+        '<a class="crumb" href="index.html#products">← All products</a>' +
+        '<div class="pdp__grid">' +
+        '  <div class="pdp__media"><img src="' + p.img + '" alt="' + p.name + '" /></div>' +
+        '  <div class="pdp__info">' +
+        '    <p class="eyebrow">' + p.category + '</p>' +
+        '    <h1>' + p.name + '</h1>' +
+        '    <p class="muted">' + p.tagline + ' · ' + p.size + '</p>' +
+        '    <p class="pdp__price">$' + p.price + '</p>' +
+        '    <p class="lead">' + p.blurb + '</p>' +
+        '    <ul class="ticks">' + p.notes.map(function (n) { return "<li>" + n + "</li>"; }).join("") + '</ul>' +
+        '    <div class="pdp__buy">' +
+        '      <div class="qty">' +
+        '        <button class="qty__btn" data-qstep="-1" aria-label="decrease">−</button>' +
+        '        <input class="qty__input" data-qty-input type="number" min="1" value="1" />' +
+        '        <button class="qty__btn" data-qstep="1" aria-label="increase">+</button>' +
+        '      </div>' +
+        '      <button class="btn btn--solid" data-add="' + p.id + '">Add to cart</button>' +
+        '      <a class="btn btn--ghost" href="cart.html" id="buynow">Buy now →</a>' +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
+
+      // qty stepper
+      pdp.addEventListener("click", function (e) {
+        var s = e.target.closest("[data-qstep]");
+        if (!s) return;
+        var input = pdp.querySelector("[data-qty-input]");
+        var v = Math.max(1, (parseInt(input.value, 10) || 1) + parseInt(s.dataset.qstep, 10));
+        input.value = v;
+      });
+      document.getElementById("buynow").addEventListener("click", function () {
+        var q = parseInt(pdp.querySelector("[data-qty-input]").value, 10) || 1;
+        Store.add(p.id, q);
+      });
+
+      // related
+      var rel = window.PRODUCTS.filter(function (x) { return x.id !== p.id; }).slice(0, 4);
+      document.getElementById("related").innerHTML = rel.map(function (r) {
+        return '<article class="card">' +
+          '<a class="card__img" href="product.html?id=' + r.id + '"><img src="' + r.img + '" alt="' + r.name + '"/></a>' +
+          '<a class="card__title" href="product.html?id=' + r.id + '"><h3>' + r.name + '</h3></a>' +
+          '<div class="card__row"><span class="price">$' + r.price + '</span>' +
+          '<button class="btn btn--ghost" data-add="' + r.id + '">Add</button></div></article>';
+      }).join("");
+    })();
+  </script>
+</body>
+</html>

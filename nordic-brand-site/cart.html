@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA — Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">AURELIA</a>
+      <nav class="nav__links">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#story">Story</a>
+        <a href="index.html#shop">Shop</a>
+      </nav>
+      <a class="btn btn--ghost" href="cart.html" data-cart-label>Cart · 0</a>
+    </div>
+  </header>
+
+  <main class="container cartpage">
+    <h1>Your cart</h1>
+    <div id="cart-body"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand">AURELIA</span>
+      <span class="muted">© 2026 · Nordic personal care · Demo build</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    function render() {
+      var items = Store.items();
+      var body = document.getElementById("cart-body");
+      if (!items.length) {
+        body.innerHTML =
+          '<div class="empty"><p class="muted">Your cart is empty.</p>' +
+          '<a class="btn btn--solid" href="index.html#products">Shop the collection</a></div>';
+        return;
+      }
+      var rows = items.map(function (it) {
+        return '<div class="line" data-line="' + it.product.id + '">' +
+          '<a class="line__img" href="product.html?id=' + it.product.id + '"><img src="' + it.product.img + '" alt="' + it.product.name + '"/></a>' +
+          '<div class="line__info">' +
+          '  <a class="line__name" href="product.html?id=' + it.product.id + '">' + it.product.name + '</a>' +
+          '  <p class="muted">' + it.product.tagline + ' · ' + it.product.size + '</p>' +
+          '  <button class="link-btn" data-remove="' + it.product.id + '">Remove</button>' +
+          '</div>' +
+          '<div class="qty qty--sm">' +
+          '  <button class="qty__btn" data-dec="' + it.product.id + '">−</button>' +
+          '  <span class="qty__num">' + it.qty + '</span>' +
+          '  <button class="qty__btn" data-inc="' + it.product.id + '">+</button>' +
+          '</div>' +
+          '<div class="line__price">' + Store.money(it.line) + '</div>' +
+          '</div>';
+      }).join("");
+
+      var ship = Store.shipping();
+      var summary =
+        '<div class="summary">' +
+        '  <div class="summary__row"><span>Subtotal</span><span>' + Store.money(Store.subtotal()) + '</span></div>' +
+        '  <div class="summary__row"><span>Shipping</span><span>' + (ship === 0 ? "Free" : Store.money(ship)) + '</span></div>' +
+        '  <div class="summary__row summary__total"><span>Total</span><span>' + Store.money(Store.total()) + '</span></div>' +
+        (Store.subtotal() < Store.FREE_OVER
+          ? '<p class="muted note">Free shipping over $' + Store.FREE_OVER + '.</p>' : '') +
+        '  <a class="btn btn--solid btn--block" href="checkout.html">Checkout →</a>' +
+        '  <a class="btn btn--text btn--block" href="index.html#products">Continue shopping</a>' +
+        '</div>';
+
+      body.innerHTML = '<div class="cartgrid"><div class="lines">' + rows + '</div>' + summary + '</div>';
+    }
+
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (t.dataset.inc) { bump(t.dataset.inc, 1); }
+      else if (t.dataset.dec) { bump(t.dataset.dec, -1); }
+      else if (t.dataset.remove) { Store.remove(t.dataset.remove); render(); }
+    });
+    function bump(id, d) {
+      var cur = (Store.items().find(function (x) { return x.product.id === id; }) || {}).qty || 0;
+      Store.setQty(id, cur + d);
+      render();
+    }
+    render();
+  </script>
+</body>
+</html>
