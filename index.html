@@ -1,0 +1,60 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>project-case · 项目总览</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Segoe UI','Microsoft YaHei',sans-serif;background:#f6f8fa;color:#1f2937;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+a{color:#2e8b57}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 12px;color:#111827}
+.sub{color:#6b7280;font-size:14px;margin-bottom:8px}
+.back{display:inline-block;margin-bottom:16px;font-size:13px;text-decoration:none}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;text-align:center}
+.kpi b{display:block;font-size:22px;color:#2e8b57}.kpi span{font-size:12px;color:#6b7280}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid #eef0f2;text-align:left}
+th{background:#2e8b57;color:#fff;font-weight:600}
+tr:hover td{background:#f9fafb}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+.bar-label{width:120px;flex:0 0 120px;text-align:right;color:#374151}
+.bar-track{flex:1;background:#eef2f0;border-radius:5px;overflow:hidden;height:18px}
+.bar-fill{height:100%;background:linear-gradient(90deg,#2e8b57,#57c98a)}
+.bar-val{width:70px;flex:0 0 70px;color:#6b7280;font-size:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#e8f5e9;color:#1b5e20}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+.gcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gcard{display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.gcard:hover{border-color:#2e8b57;transform:translateY(-2px);box-shadow:0 6px 18px rgba(46,139,87,.12)}
+.gname{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#2e8b57}
+.gtitle{font-size:17px;font-weight:700;margin:6px 0 4px}
+.gdesc{font-size:13px;color:#6b7280;min-height:38px}
+.gcta{margin-top:10px;font-size:13px;color:#2e8b57;font-weight:600}
+@media(max-width:640px){.gcards{grid-template-columns:1fr}}</style></head>
+<body><div class="wrap"><h1>project-case · 项目总览</h1>
+<div class="sub">个人项目库 · 点击任意卡片直接查看运行效果</div>
+<div class="gcards"><a class="gcard" href="ecom-scraper/demo.html">
+<div class="gname">ecom-scraper</div>
+<div class="gtitle">多平台数据采集框架</div>
+<div class="gdesc">会话/限流/重试 · 适配器架构 · 增量去重 · Excel 导出</div>
+<div class="gcta">查看效果 →</div></a><a class="gcard" href="findata-quant/demo.html">
+<div class="gname">findata-quant</div>
+<div class="gtitle">量化数据层与多因子选股</div>
+<div class="gdesc">Parquet+DuckDB · 横截面因子 · 打分排名选股</div>
+<div class="gcta">查看效果 →</div></a><a class="gcard" href="ozonpulse/demo.html">
+<div class="gname">ozonpulse</div>
+<div class="gtitle">电商运营看板（全栈）</div>
+<div class="gdesc">FastAPI + React · GMV/客单价/动销/畅销榜</div>
+<div class="gcta">查看效果 →</div></a><a class="gcard" href="danmu-harvester/demo.html">
+<div class="gname">danmu-harvester</div>
+<div class="gtitle">弹幕抓取与语义分类</div>
+<div class="gdesc">抓取→结构化→分类 · 可解释规则分类器</div>
+<div class="gcta">查看效果 →</div></a><a class="gcard" href="ecom-api-adapter/README.md">
+<div class="gname">ecom-api-adapter</div>
+<div class="gtitle">订单归一化中间件</div>
+<div class="gdesc">多平台字段映射 · 统一状态机 · 零依赖</div>
+<div class="gcta">查看效果 →</div></a><a class="gcard" href="nordic-brand-site/index.html">
+<div class="gname">nordic-brand-site</div>
+<div class="gtitle">北欧极简品牌官网</div>
+<div class="gdesc">纯静态 · 完全响应式 · CSS 设计系统</div>
+<div class="gcta">查看效果 →</div></a></div></div></body></html>

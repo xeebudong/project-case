@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ecom-scraper Demo</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Segoe UI','Microsoft YaHei',sans-serif;background:#f6f8fa;color:#1f2937;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+a{color:#2e8b57}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 12px;color:#111827}
+.sub{color:#6b7280;font-size:14px;margin-bottom:8px}
+.back{display:inline-block;margin-bottom:16px;font-size:13px;text-decoration:none}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;text-align:center}
+.kpi b{display:block;font-size:22px;color:#2e8b57}.kpi span{font-size:12px;color:#6b7280}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid #eef0f2;text-align:left}
+th{background:#2e8b57;color:#fff;font-weight:600}
+tr:hover td{background:#f9fafb}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+.bar-label{width:120px;flex:0 0 120px;text-align:right;color:#374151}
+.bar-track{flex:1;background:#eef2f0;border-radius:5px;overflow:hidden;height:18px}
+.bar-fill{height:100%;background:linear-gradient(90deg,#2e8b57,#57c98a)}
+.bar-val{width:70px;flex:0 0 70px;color:#6b7280;font-size:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;background:#e8f5e9;color:#1b5e20}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap"><a class="back" href="../index.html">← 返回项目总览</a>
+<h1>ecom-scraper · 采集结果可视化</h1>
+<div class="sub">DemoAdapter 离线采集 5 页 · 共 100 条商品 · 增量去重后展示</div>
+<div class="card"><h2>各品类商品数分布</h2><div class="bar-row"><div class="bar-label">食品</div><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><div class="bar-val">25</div></div><div class="bar-row"><div class="bar-label">手机数码</div><div class="bar-track"><div class="bar-fill" style="width:76.0%"></div></div><div class="bar-val">19</div></div><div class="bar-row"><div class="bar-label">家居</div><div class="bar-track"><div class="bar-fill" style="width:60.0%"></div></div><div class="bar-val">15</div></div><div class="bar-row"><div class="bar-label">美妆</div><div class="bar-track"><div class="bar-fill" style="width:56.0%"></div></div><div class="bar-val">14</div></div><div class="bar-row"><div class="bar-label">服饰</div><div class="bar-track"><div class="bar-fill" style="width:56.0%"></div></div><div class="bar-val">14</div></div><div class="bar-row"><div class="bar-label">母婴</div><div class="bar-track"><div class="bar-fill" style="width:52.0%"></div></div><div class="bar-val">13</div></div></div>
+<div class="card"><h2>销量 Top10 商品</h2><table><thead><tr><th>SKU</th><th>标题</th><th>品类</th><th>价格</th><th>销量</th><th>店铺</th></tr></thead><tbody><tr><td>100056</td><td>商品-100056</td><td>美妆</td><td>¥549</td><td>4969</td><td>店铺14</td></tr><tr><td>100092</td><td>商品-100092</td><td>家居</td><td>¥79</td><td>4874</td><td>店铺3</td></tr><tr><td>100008</td><td>商品-100008</td><td>家居</td><td>¥468</td><td>4827</td><td>店铺9</td></tr><tr><td>100033</td><td>商品-100033</td><td>美妆</td><td>¥773</td><td>4788</td><td>店铺14</td></tr><tr><td>100096</td><td>商品-100096</td><td>手机数码</td><td>¥438</td><td>4781</td><td>店铺19</td></tr><tr><td>100068</td><td>商品-100068</td><td>食品</td><td>¥966</td><td>4677</td><td>店铺19</td></tr><tr><td>100094</td><td>商品-100094</td><td>手机数码</td><td>¥973</td><td>4666</td><td>店铺8</td></tr><tr><td>100032</td><td>商品-100032</td><td>家居</td><td>¥261</td><td>4598</td><td>店铺18</td></tr><tr><td>100006</td><td>商品-100006</td><td>服饰</td><td>¥36</td><td>4597</td><td>店铺7</td></tr><tr><td>100025</td><td>商品-100025</td><td>美妆</td><td>¥956</td><td>4562</td><td>店铺8</td></tr></tbody></table></div>
+<div class="card"><h2>说明</h2><p>数据来自 <code>DemoAdapter</code>（可复现），真实平台只需实现一个适配器即可复用整套采集/去重/导出流程。运行 <code>python -m ecom_scraper.cli --adapter demo</code> 可导出同样数据的多 Sheet Excel。</p></div></div></body></html>

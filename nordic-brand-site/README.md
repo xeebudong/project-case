@@ -1,7 +1,5 @@
 # nordic-brand-site · 北欧极简轻奢品牌官网
 
-> 对应猿急送需求 **159765「企业全套官网 UI 框架定制设计（极简轻奢北欧风）」** 的可运行 Demo。
-
 对标 COS / coslus 风格：低饱和中性色、大面积留白、建筑感排版、轻量无多余装饰。
 
 ## 特点
@@ -17,7 +15,7 @@ python -m http.server 5500
 # 打开 http://localhost:5500
 ```
 
-## 交付时的扩展
+## 扩展方向
 - 接入真实商品数据 + 购物车（Snipcart / Shopify Buy Button / 自建）
 - i18n 多语言（默认英文，可扩展中文等）
 - CMS 内容管理（Sanity / Strapi）
