@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA — Nordic Personal Care</title>
+  <meta name="description" content="Minimalist Nordic personal care & wellbeing brand." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#">AURELIA</a>
+      <nav class="nav__links">
+        <a href="#products">Products</a>
+        <a href="#story">Story</a>
+        <a href="#shop">Shop</a>
+      </nav>
+      <button class="btn btn--ghost" aria-label="cart">Cart · 0</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Nordic personal care</p>
+        <h1>Quiet luxury<br />for everyday rituals.</h1>
+        <p class="lead">Low-tone, sustainable formulas designed with restraint —
+          the calm of Scandinavian living, distilled.</p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#shop">Shop the collection</a>
+          <a class="btn btn--text" href="#story">Our philosophy →</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="products" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>The collection</h2>
+        <p class="muted">Four essentials. Nothing more.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card__img card__img--1"></div>
+          <h3>Cleansing Balm</h3>
+          <p class="muted">Cold-pressed oils · 100ml</p>
+          <div class="card__row"><span class="price">$38</span>
+            <button class="btn btn--ghost">Add</button></div>
+        </article>
+        <article class="card">
+          <div class="card__img card__img--2"></div>
+          <h3>Daily Serum</h3>
+          <p class="muted">Niacinamide 5% · 30ml</p>
+          <div class="card__row"><span class="price">$52</span>
+            <button class="btn btn--ghost">Add</button></div>
+        </article>
+        <article class="card">
+          <div class="card__img card__img--3"></div>
+          <h3>Body Lotion</h3>
+          <p class="muted">Oat + shea · 250ml</p>
+          <div class="card__row"><span class="price">$29</span>
+            <button class="btn btn--ghost">Add</button></div>
+        </article>
+        <article class="card">
+          <div class="card__img card__img--4"></div>
+          <h3>Hand Wash</h3>
+          <p class="muted">Cedar & moss · 300ml</p>
+          <div class="card__row"><span class="price">$22</span>
+            <button class="btn btn--ghost">Add</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="section section--split">
+    <div class="container split">
+      <div class="split__art" aria-hidden="true"></div>
+      <div class="split__copy">
+        <p class="eyebrow">Our philosophy</p>
+        <h2>Less, but better.</h2>
+        <p class="lead">We build trust through restraint: transparent sourcing,
+          recyclable packaging, and formulas that do one thing exceptionally well.</p>
+        <ul class="ticks">
+          <li>Carbon-neutral shipping</li>
+          <li>Refillable glass vessels</li>
+          <li>Dermatologically tested</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="cta">
+    <div class="container cta__inner">
+      <h2>Join the ritual</h2>
+      <p class="muted">Early access to drops. No noise.</p>
+      <form class="subscribe" onsubmit="return false;">
+        <input type="email" placeholder="you@email.com" aria-label="email" required />
+        <button class="btn btn--solid">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand">AURELIA</span>
+      <span class="muted">© 2026 · Nordic personal care · Demo build</span>
+    </div>
+  </footer>
+</body>
+</html>
