@@ -62,8 +62,9 @@ h3{font-size:18px;font-weight:500;margin:14px 0 4px}
 /* split */
 .section--split{background:var(--surface)}
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-.split__art{aspect-ratio:5/4;border-radius:var(--radius);
+.split__art{aspect-ratio:5/4;border-radius:var(--radius);overflow:hidden;
   background:linear-gradient(140deg,#dcd6c9,#c3bdb0)}
+.split__art img{width:100%;height:100%;object-fit:cover;display:block}
 .ticks{list-style:none;margin-top:22px;display:grid;gap:10px}
 .ticks li{padding-left:26px;position:relative;color:#4a483f}
 .ticks li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:2px;background:var(--accent)}
