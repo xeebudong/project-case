@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# generated outputs
+danmu-harvester/danmu.json
+danmu-harvester/danmu_classified.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
