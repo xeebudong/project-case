@@ -13,3 +13,8 @@ danmu-harvester/danmu_classified.json
 Thumbs.db
 .idea/
 .vscode/
+
+# 独立仓库（各自有 .git，单独推 GitHub，不纳入本 monorepo）
+ecom-scraper/
+findata-quant/
+ozonpulse/
